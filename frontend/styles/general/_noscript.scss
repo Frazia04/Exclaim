@@ -1,0 +1,10 @@
+// Noscript styles
+// ---------------
+
+@use 'colors';
+
+noscript {
+  color: colors.$rptu-red;
+  font-size: 2em;
+  font-weight: bold;
+}

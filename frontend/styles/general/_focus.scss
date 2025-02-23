@@ -1,0 +1,21 @@
+// Focus
+// -----
+
+// Remove old focus ring
+::-moz-focus-inner {
+  padding: 0;
+  border-style: none;
+}
+
+// Only show focus if browser determines it is necessary
+button:focus:not(:focus-visible) {
+  outline-style: none;
+}
+
+// Custom focus style
+@mixin focus {
+  outline: 0.1rem solid var(--col-focus-outline);
+}
+:focus-visible {
+  @include focus;
+}

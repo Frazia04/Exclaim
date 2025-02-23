@@ -1,0 +1,45 @@
+// Vector Graphics (SVG)
+// ---------------------
+
+@use 'fonts';
+
+// ExClaim Logo, see src/components/svg/ExclaimLogo.vue
+.exclaim-logo {
+  height: 1em;
+  width: auto;
+  vertical-align: top;
+
+  // Group for letters
+  > g {
+    fill: var(--col-logo-text);
+  }
+
+  // Check mark path
+  > path {
+    fill: var(--col-logo-check);
+  }
+}
+
+// RPTU-Logo, see src/components/svg/RPTULogo.vue
+.rptu-logo {
+  // Style it in such a way that it can be used as replacement for the capital letters "RPTU"
+  height: fonts.$cap-height;
+  width: auto;
+  vertical-align: baseline;
+  fill: currentcolor;
+}
+
+// Material symbols, included from @material-symbols/svg-400
+.material-symbol {
+  // Material symbols have a size of 24dp x 24dp, including a padding of 2dp on each side:
+  // https://m3.material.io/styles/icons/designing-icons#089c3a26-5991-4241-8bbe-8a5ff2014247
+  $-size: 24dp;
+  $-padding: 2dp;
+
+  // We scale the live area to the height of a capital letter and align it properly
+  height: calc($-size / ($-size - 2 * $-padding) * fonts.$cap-height);
+  width: auto;
+  vertical-align: calc(-1 * $-padding / $-size * fonts.$cap-height);
+
+  fill: currentcolor;
+}

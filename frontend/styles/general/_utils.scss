@@ -1,0 +1,23 @@
+// Utility classes
+// ---------------
+
+.alert-success,
+.btn-success {
+  color: var(--col-success-text);
+  background-color: var(--col-success-bg);
+}
+
+.alert-danger,
+.btn-danger {
+  color: var(--col-danger-text);
+  background-color: var(--col-danger-bg);
+}
+
+.alert-success,
+.alert-danger {
+  margin: 0.5rem 0;
+  border-radius: 0.25rem;
+  padding: 0.15rem 0.5rem;
+  width: fit-content;
+  cursor: default;
+}

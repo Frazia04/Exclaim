@@ -1,0 +1,240 @@
+// Normalize browser's default style. Based on:
+// - modern-normalize: https://github.com/sindresorhus/modern-normalize/blob/main/modern-normalize.css (MIT License)
+// - Bootstrap Reboot: https://github.com/twbs/bootstrap/blob/main/scss/_reboot.scss (MIT License)
+
+/* stylelint-disable no-descending-specificity */
+
+@use 'fonts';
+
+hr {
+  margin: 1rem 0;
+  color: inherit;
+  border: 0;
+  border-top: 1px solid;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.17rem;
+}
+
+h4 {
+  font-size: 1rem;
+}
+
+h5 {
+  font-size: 0.83rem;
+}
+
+h6 {
+  font-size: 0.75rem;
+}
+
+p,
+blockquote,
+figure {
+  margin: 0 0 1rem;
+}
+
+abbr[title] {
+  text-decoration: underline dotted var(--col-border) 0.08em;
+  text-decoration-skip-ink: none;
+  text-underline-offset: 0.04em;
+  cursor: help;
+
+  &:hover {
+    text-decoration-color: var(--col-text);
+  }
+}
+
+ol,
+ul {
+  padding-left: 2rem;
+}
+
+ol,
+ul,
+dl {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+ol ol,
+ul ul,
+ol ul,
+ul ol {
+  margin-bottom: 0;
+}
+
+dt {
+  font-weight: 500;
+}
+
+dd {
+  margin: 0 0 0.5rem;
+}
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+small {
+  font-size: 0.8em;
+}
+
+mark {
+  padding: 0.1em;
+  color: var(--col-mark-text);
+  background-color: var(--col-mark-bg);
+}
+
+sub,
+sup {
+  position: relative;
+  font-size: 0.75em;
+  line-height: 0;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+a {
+  color: var(--col-link);
+  text-decoration: underline 0.05em;
+  text-decoration-skip-ink: all;
+  text-underline-offset: 0.05em;
+
+  &:hover {
+    color: var(--col-link-hover);
+  }
+}
+
+a:not([href], [class]),
+a.button {
+  &,
+  &:hover {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+code,
+pre {
+  font-family: fonts.$code;
+  font-size: 1em;
+}
+
+// TODO: Check format for code listings
+pre {
+  display: block;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.75rem;
+  overflow: auto;
+  font-size: 0.875em;
+}
+
+table {
+  caption-side: bottom;
+  border-collapse: collapse;
+}
+
+caption {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  color: var(--col-text);
+  text-align: left;
+}
+
+th {
+  text-align: inherit;
+}
+
+thead,
+tbody,
+tfoot,
+tr,
+td,
+th {
+  border-color: inherit;
+  border-style: solid;
+  border-width: 0;
+}
+
+textarea {
+  resize: vertical;
+}
+
+fieldset {
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+legend {
+  float: left;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.17rem;
+  line-height: inherit;
+
+  + * {
+    clear: left; // 2
+  }
+}
+
+::-webkit-datetime-edit-fields-wrapper,
+::-webkit-datetime-edit-text,
+::-webkit-datetime-edit-minute,
+::-webkit-datetime-edit-hour-field,
+::-webkit-datetime-edit-day-field,
+::-webkit-datetime-edit-month-field,
+::-webkit-datetime-edit-year-field {
+  padding: 0;
+}
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+output {
+  display: inline-block;
+}
+
+summary {
+  display: list-item;
+  cursor: pointer;
+}
+
+progress {
+  vertical-align: baseline;
+}

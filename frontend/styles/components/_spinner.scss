@@ -1,0 +1,57 @@
+// Loading Spinner Animation
+// -------------------------
+
+// See src/components/general/LoadingSpinner.vue
+
+@use 'sass:math';
+
+// Duration for a full grow-shrink-cycle
+$-grow-shrink-duration: 1333ms;
+
+// Duration of a rotation is 25% longer such that growing starts from different positions
+$-rotation-duration: calc(1.25 * $-grow-shrink-duration);
+
+// Circle radius, keep in sync with `r` attribute of <circle>
+$-radius: 18;
+
+// Calculate circumference from radius
+$-circumference: calc(2 * $-radius * math.$pi);
+
+.spinner {
+  height: 2.25em;
+  fill: none;
+  animation: spinner-rotate $-rotation-duration linear infinite;
+
+  circle {
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-dasharray: $-circumference;
+    stroke: var(--col-logo-text);
+    transform-origin: center;
+    animation: spinner-grow-shrink $-grow-shrink-duration cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+}
+
+@keyframes spinner-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinner-grow-shrink {
+  // Growing phase
+  0% {
+    stroke-dashoffset: $-circumference;
+    transform: rotate(0);
+  }
+  50% {
+    stroke-dashoffset: calc($-circumference / 4);
+    transform: rotate(0);
+  }
+
+  // Shrinking phase
+  100% {
+    stroke-dashoffset: $-circumference;
+    transform: rotate(360deg);
+  }
+}

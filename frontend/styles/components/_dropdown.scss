@@ -1,0 +1,49 @@
+// Dropdown Menu
+// -------------
+
+// See src/components/layout/Dropdown*.vue
+
+@use '../general/focus';
+
+.dropdown {
+  position: relative;
+
+  > ul {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: var(--col-bg1);
+    border: 0.1rem solid var(--col-border);
+    border-radius: 0.5rem;
+    list-style: none;
+    margin: 0.25rem 0 0;
+    padding: 0;
+  }
+
+  [aria-expanded='true'] + ul {
+    display: block;
+  }
+
+  [role='menuitem'] {
+    display: block;
+    color: inherit;
+    margin: 0.25rem;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  a[role='menuitem'] {
+    cursor: pointer;
+    text-decoration: none;
+
+    &.selected {
+      background-color: var(--col-selected-bg);
+    }
+
+    &:focus {
+      @include focus.focus;
+    }
+  }
+}

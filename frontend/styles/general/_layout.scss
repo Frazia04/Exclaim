@@ -1,0 +1,183 @@
+// Main page layout
+// ----------------
+
+// See src/components/layout/App.vue
+
+@use 'sass:math';
+@use 'breakpoints';
+@use 'fonts';
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+// Parameters for our responsive root font size. Use `rem` unit for all responsive sizes.
+$-font-size-base: 15px;
+$-font-size-factor: 0.390625; // unit: vw (viewport width / 100)
+
+// Calculate the breakpoint width in rem, rounded to two decimal digits
+$-breakpoint-rem-exact: math.div(
+  breakpoints.$large,
+  $-font-size-base + $-font-size-factor * math.div(breakpoints.$large, 100)
+);
+$-breakpoint-rem: math.div(math.floor($-breakpoint-rem-exact * 100), 100);
+
+html {
+  font-size: calc($-font-size-base + #{$-font-size-factor}vw);
+
+  height: 100%;
+
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: fonts.$text;
+  font-weight: 400;
+  line-height: 1.5;
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+
+  // The body is a flexbox with a single child #app that grows to full height.
+  // That wrapper element is required such that password managers can insert additional elements into the body.
+  display: flex;
+  flex-direction: column;
+
+  // Plain layout for small devices, overwritten in media query below
+  color: var(--col-text);
+  background-color: var(--col-bg1);
+}
+
+#app {
+  flex-grow: 1;
+
+  padding: 0.5rem;
+
+  // Arrange header / main / footer in a grid. A grid instead of flexbox is required such that the
+  // footer can stick to the bottom but still has margin-top set to a value different from 'auto'.
+  display: grid;
+  grid-template-rows: [header] auto [main] 1fr [footer] auto;
+}
+
+header {
+  grid-row-start: header;
+  line-height: 1;
+  font-size: 1.5em;
+  margin-bottom: 0.75rem;
+
+  // Wrapper div such that we can set a width on large device layout (see below)
+  > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+
+    // Container with dropdowns on the top right
+    > ul {
+      display: flex;
+      gap: 0.75rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
+
+main,
+#app > .spinner {
+  grid-row-start: main;
+}
+
+#app > .spinner {
+  place-self: center;
+}
+
+footer {
+  grid-row-start: footer;
+  line-height: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5em 1em;
+  font-size: 0.8rem;
+  margin-top: 0.75rem;
+
+  // Small devices: Hide logo in footer
+  > svg {
+    display: none;
+  }
+}
+
+// Small devices: Hide account name in main navigation
+#user-menu {
+  > button > span {
+    display: none;
+  }
+}
+
+// Large device layout
+@media (min-width: breakpoints.$large) {
+  body {
+    background-color: var(--col-bg2);
+  }
+
+  #app {
+    padding: 0;
+  }
+
+  // Space around header, main, and footer
+  $-space-rem: 1;
+
+  header,
+  main,
+  footer {
+    background-color: var(--col-bg1);
+    padding: #{$-space-rem}rem;
+  }
+
+  header {
+    display: flex;
+    justify-content: center;
+
+    > * {
+      // To align the header content with the main content, we need to subtract the inner and outer horizontal spaces of the main box
+      width: #{calc($-breakpoint-rem - 4 * $-space-rem)}rem;
+    }
+  }
+
+  main {
+    place-self: start center;
+    width: #{calc($-breakpoint-rem - 2 * $-space-rem)}rem; // this leaves at least $-space-rem margin left and right
+    border-radius: 0.75rem;
+
+    &.login {
+      place-self: center;
+    }
+  }
+
+  footer {
+    justify-content: center;
+
+    // Show logo
+    > svg {
+      display: unset;
+    }
+  }
+
+  // Show account name on large devices, hide it in dropdown
+  #user-menu {
+    > button > span {
+      display: initial;
+    }
+
+    > ul > li:first-child {
+      display: none;
+    }
+  }
+}

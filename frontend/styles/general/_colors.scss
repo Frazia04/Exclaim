@@ -1,0 +1,145 @@
+// Color schemes and theme variables
+// ---------------------------------
+
+@use 'sass:color';
+
+// RPTU brand colors
+$rptu-blue-grey: #507289;
+$rptu-green-grey: #77b6ba;
+$rptu-dark-blue: #042c58;
+$rptu-light-blue: #6ab2e7;
+$rptu-dark-green: #006b6b;
+$rptu-light-green: #26d07c;
+$rptu-purple: #4c3575;
+$rptu-pink: #d13896;
+$rptu-red: #e31b4c;
+$rptu-orange: #ffa252;
+$rptu-black: #000;
+$rptu-white: #fff;
+
+// RPTU brand color shades
+@function variant90($color) {
+  @return color.mix($color, white, 90%);
+}
+@function variant80($color) {
+  @return color.mix($color, white, 72%);
+}
+@function variant70($color) {
+  @return color.mix($color, white, 63%);
+}
+@function variant60($color) {
+  @return color.mix($color, white, 54%);
+}
+@function variant50($color) {
+  @return color.mix($color, white, 45%);
+}
+@function variant40($color) {
+  @return color.mix($color, white, 36%);
+}
+@function variant30($color) {
+  @return color.mix($color, white, 27%);
+}
+@function variant20($color) {
+  @return color.mix($color, white, 18%);
+}
+@function variant10($color) {
+  @return color.mix($color, white, 9%);
+}
+
+// Set `display` property depending on the effective theme
+.theme-dark-only {
+  display: none;
+}
+
+// Set `display` property depending on the theme the auto mode would select
+.auto-theme-dark-only {
+  display: none;
+}
+
+// Colors for the 'light' theme
+@mixin -light {
+  color-scheme: light;
+
+  --col-text: #{$rptu-black};
+  --col-link: #{$rptu-dark-blue};
+  --col-link-hover: #{$rptu-black};
+
+  --col-logo-text: #{$rptu-dark-blue};
+  --col-logo-check: #{$rptu-light-green};
+
+  --col-bg1: #{$rptu-white};
+  --col-bg2: #{variant40($rptu-blue-grey)};
+
+  --col-border: #{variant70($rptu-black)};
+
+  --col-success-text: #{$rptu-black};
+  --col-success-bg: #{$rptu-light-green};
+
+  --col-danger-text: #{$rptu-white};
+  --col-danger-bg: #{$rptu-red};
+
+  --col-mark-text: #{$rptu-black};
+  --col-mark-bg: #{$rptu-orange};
+
+  --col-selected-bg: #{$rptu-light-blue};
+  --col-focus-outline: #{$rptu-dark-blue};
+}
+
+// Colors for the 'dark' theme
+@mixin -dark {
+  color-scheme: dark;
+
+  --col-text: #{$rptu-white};
+  --col-link: #{$rptu-light-blue};
+  --col-link-hover: #{$rptu-white};
+
+  --col-logo-text: #{$rptu-light-blue};
+  --col-logo-check: #{$rptu-light-green};
+
+  --col-bg1: #{$rptu-black};
+  --col-bg2: #{$rptu-dark-blue};
+
+  --col-border: #{variant30($rptu-black)};
+
+  --col-success-text: #{$rptu-black};
+  --col-success-bg: #{$rptu-light-green};
+
+  --col-danger-text: #{$rptu-white};
+  --col-danger-bg: #{$rptu-red};
+
+  --col-mark-text: #{$rptu-white};
+  --col-mark-bg: #{$rptu-orange};
+
+  --col-selected-bg: #{$rptu-dark-blue};
+  --col-focus-outline: #{$rptu-light-blue};
+
+  .theme-light-only {
+    display: none;
+  }
+  .theme-dark-only {
+    display: initial;
+  }
+}
+
+:root, // Missing theme -> default to 'light'
+[data-theme='auto'], // 'auto' defaults to light, overwritten by media query below
+[data-theme='light'] {
+  @include -light;
+}
+
+[data-theme='dark'] {
+  @include -dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-theme='auto'] {
+    @include -dark;
+  }
+
+  .auto-theme-light-only {
+    display: none;
+  }
+  .auto-theme-dark-only {
+    display: initial;
+  }
+}

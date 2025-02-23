@@ -1,0 +1,89 @@
+// Forms
+// -----
+
+@use 'breakpoints';
+
+input,
+button,
+select,
+optgroup,
+textarea {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+select:disabled {
+  // TODO: color, border-color
+  opacity: 1;
+}
+
+button,
+.button,
+[type='button'],
+[type='reset'],
+[type='submit'],
+::file-selector-button {
+  appearance: button;
+  display: inline-block;
+  cursor: pointer;
+
+  background-color: var(--col-bg2);
+  border: 0.05rem solid var(--col-border);
+  border-radius: 0.3rem;
+  box-shadow: var(--col-border) 0 1px 0;
+
+  padding: 0.1rem;
+}
+
+button:disabled,
+.button.disabled,
+[type='button']:disabled,
+[type='reset']:disabled,
+[type='submit']:disabled,
+::file-selector-button:disabled {
+  cursor: default;
+}
+
+// Button elements we use for accessability purposes only, not styled as buttons
+button.wrapper,
+[type='button'].wrapper {
+  border: 0;
+  background: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+.form-fields {
+  margin: 0.5rem 0;
+  display: grid;
+  grid-template-columns: 1fr;
+
+  > label {
+    &::after {
+      content: ':';
+    }
+    &:not(:first-child) {
+      margin-top: 0.5rem;
+    }
+  }
+}
+
+@media (min-width: breakpoints.$large) {
+  .form-fields {
+    grid-template-columns: max-content 1fr;
+    gap: 0.5rem 0.25rem;
+
+    > label {
+      &:not(:first-child) {
+        margin-top: 0;
+      }
+      grid-column: 1;
+      text-align: right;
+    }
+    > input {
+      grid-column: 2;
+    }
+  }
+}

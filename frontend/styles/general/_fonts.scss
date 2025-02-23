@@ -1,0 +1,17 @@
+// Fonts
+// -----
+
+// Red Hat Text (RPTU brand font)
+@use '@fontsource-variable/red-hat-text' as RedHatTextVariable;
+@use '@fontsource-variable/red-hat-text/wght-italic' as RedHatTextVariableItalic;
+$text: 'Red Hat Text Variable', sans-serif;
+
+// Red Hat Mono
+@use '@fontsource-variable/red-hat-mono' as RedHatMonoVariable;
+@use '@fontsource-variable/red-hat-mono/wght-italic' as RedHatMonoVariableItalic;
+$code: 'Red Hat Mono Variable', monospace;
+
+// The length unit `cap` represents the nominal height of capital letters. Since that unit is
+// relatively new, not all browsers support it yet. We define the cap height for our font here and
+// use that variable to calculate cap-relative lengths in a way that is supported by all browser.
+$cap-height: 0.7em;

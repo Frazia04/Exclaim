@@ -1,0 +1,73 @@
+.styled-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.7em;
+  font-family: sans-serif;
+  min-width: 400px;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #a8a6a8;
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid #a8a6a8;
+}
+
+.styled-table tbody tr:nth-of-type(odd) {
+  background-color: #f5f7f6;
+}
+
+/* .vue-nice-table .table td,
+.table th {
+  border-top-width: 0px;
+  padding: 3px 5px !important;
+  height: 40px;
+  vertical-align: top !important;
+}
+.vue-nice-table .table td {
+  border-bottom: 0;
+}
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+    opacity: 0;
+}
+.vue-nice-table .table th {
+  border-bottom: 1px solid;
+  border-color: #5e5e5e !important;
+  font-weight: 800;
+  color: #5e5e5e;
+    white-space: nowrap;
+}
+.vue-nice-table .table tfoot {
+  border-top: 1px solid #000000;
+}
+.vue-nice-table .table tfoot td {
+  font-weight: 800;
+}
+.table-responsive::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+.table-responsive::-webkit-scrollbar:horizontal {
+    height: 8px;
+}
+.table-responsive::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, .5);
+    border-radius: 10px;
+    border: 2px solid #ffffff;
+}
+.table-responsive::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+.table-responsive table th{
+    cursor: pointer;
+}
+.vue-nice-table .stripped tbody tr:nth-child(odd) {
+   background-color: #eee !important;
+}
+ */
