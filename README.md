@@ -7,15 +7,19 @@ The system supports functionalities like lecture management, exercise creation, 
 
 ## **Project Structure**
 
-Exclaim/ 
-├── backend/ # Core backend logic (Spring Boot) 
+     Exclaim/ 
 
-├── frontend/ # Frontend interface (Vue.js + TypeScript) │ 
-└── components/
-│ └── views/ # .vue files handling UI for endpoints 
-└──api/ # API calls from frontend (TypeScript files)
+      ── backend/ # Core backend logic (Spring Boot) 
 
-├── api/ # API Controllers for lectures, exercises, and groups
+      ── frontend/ # Frontend interface (Vue.js + TypeScript) 
+
+          └── components/
+
+              └── views/ # .vue files handling UI for endpoints 
+  
+          └── api/ # API calls from frontend (TypeScript files)
+
+      ── api/ # API Controllers for lectures, exercises, and groups
 
 ---
 
