@@ -25,7 +25,7 @@ The system supports functionalities like lecture management, exercise creation, 
 
 ##  **Key Features & My Contributions**
 
-### 📖 **Lecture Management**
+###  **Lecture Management**
 - **API Controllers**: Built endpoints to create, update, and delete lectures.
 - **Frontend Integration**:
   - Implemented API calls in **`frontend/api/`** (TypeScript) for lecture CRUD operations.
